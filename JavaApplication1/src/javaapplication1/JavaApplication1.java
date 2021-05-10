@@ -54,6 +54,8 @@ public class JavaApplication1 {
         
         System.out.println("\nIn Pre-Order\n");
         preOrder(a);
+        System.out.println("\nIn Pre-Order Recusrsion\n");
+        preOrderRecursion(a);
 
         
     }
@@ -98,15 +100,11 @@ public class JavaApplication1 {
     
     public static <T> void inOrderRecursion(Node<T> root){
         if(root==null)
-            return;
-        
-        inOrderRecursion(root.getLeftChild());
-        
-        System.out.print(root.getData() + " --> ");
-        
+            return;        
+        inOrderRecursion(root.getLeftChild());        
+        System.out.print(root.getData() + " --> ");        
         inOrderRecursion(root.getRightChild());        
-    }
-    
+    }    
     
     //root - left sub tree -  right sub tree
     public static <T> void preOrder(Node<T> root){
@@ -144,6 +142,14 @@ public class JavaApplication1 {
         }
     }
     
+    public static <T> void preOrderRecursion (Node<T> root){
+        if(root==null)
+            return;
+        
+        System.out.print(root + " --> ");
+        preOrderRecursion(root.getLeftChild());
+        preOrderRecursion(root.getRightChild());
+    }
     
     public static <T> void breadthFirst(Node<T> root){
         if(root==null)
