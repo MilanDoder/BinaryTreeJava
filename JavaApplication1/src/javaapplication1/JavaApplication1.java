@@ -49,6 +49,8 @@ public class JavaApplication1 {
         breadthFirst(a);
         System.out.print("\n\n");
         inOrder(a);
+        System.out.println("\nIn Order Recursion\n");
+        inOrderRecursion(a);
         
     }
     // left - root - right
@@ -89,6 +91,18 @@ public class JavaApplication1 {
         
     
     }
+    
+    public static <T> void inOrderRecursion(Node<T> root){
+        if(root==null)
+            return;
+        
+        inOrderRecursion(root.getLeftChild());
+        
+        System.out.print(root.getData() + " --> ");
+        
+        inOrderRecursion(root.getRightChild());        
+    }
+    
     
     public static <T> void breadthFirst(Node<T> root){
         if(root==null)
