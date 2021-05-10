@@ -52,12 +52,15 @@ public class JavaApplication1 {
         System.out.println("\nIn Order Recursion\n");
         inOrderRecursion(a);
         
-        System.out.println("\nIn Pre-Order\n");
+        System.out.println("\n Pre-Order\n");
         preOrder(a);
-        System.out.println("\nIn Pre-Order Recusrsion\n");
+        System.out.println("\n Pre-Order Recusrsion\n");
         preOrderRecursion(a);
-        System.out.println("\nIn Post-Order Recusrsion\n");
+        System.out.println("\n Post-Order\n");
         postOrder(a);
+        System.out.println("\n Post-Order Recursion\n");
+        postOrderRecursion(a);
+        
         
 
         
@@ -184,6 +187,15 @@ public class JavaApplication1 {
                 }
             }
         }
+    }
+    
+    public static <T> void postOrderRecursion(Node<T> root){
+        if(root==null)
+            return;
+        
+        postOrderRecursion(root.getLeftChild());
+        postOrderRecursion(root.getRightChild());
+        System.out.print(root + " -->");
     }
     
     public static <T> void breadthFirst(Node<T> root){
