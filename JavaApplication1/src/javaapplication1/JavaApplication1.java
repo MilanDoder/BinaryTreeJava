@@ -52,6 +52,10 @@ public class JavaApplication1 {
         System.out.println("\nIn Order Recursion\n");
         inOrderRecursion(a);
         
+        System.out.println("\nIn Pre-Order\n");
+        preOrder(a);
+
+        
     }
     // left - root - right
     public static <T> void inOrder(Node<T> root){
@@ -101,6 +105,43 @@ public class JavaApplication1 {
         System.out.print(root.getData() + " --> ");
         
         inOrderRecursion(root.getRightChild());        
+    }
+    
+    
+    //root - left sub tree -  right sub tree
+    public static <T> void preOrder(Node<T> root){
+        if(root==null){
+            return;
+        }
+        
+        Set<Node<T>> visitedNodes = new HashSet<>();
+        Stack<Node<T>> stack = new Stack<>();
+        
+        stack.push(root);
+        
+        while(!stack.isEmpty()){
+            
+            Node<T> top = stack.pop();
+            
+            if(top.getLeftChild()==null && top.getRightChild()==null){
+                System.out.print(top+ " --> ");
+            }else if(visitedNodes.contains(top)){
+                 System.out.print(top + " --> ");
+            }else{
+                visitedNodes.add(top);
+                
+                if(top.getRightChild()!=null){
+                    stack.push(top.getRightChild());
+                }
+                if(top.getLeftChild()!=null){
+                    stack.push(top.getLeftChild());
+                }
+                
+                stack.push(top);
+            
+            }
+        
+        }
     }
     
     
