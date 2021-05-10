@@ -56,6 +56,9 @@ public class JavaApplication1 {
         preOrder(a);
         System.out.println("\nIn Pre-Order Recusrsion\n");
         preOrderRecursion(a);
+        System.out.println("\nIn Post-Order Recusrsion\n");
+        postOrder(a);
+        
 
         
     }
@@ -149,6 +152,38 @@ public class JavaApplication1 {
         System.out.print(root + " --> ");
         preOrderRecursion(root.getLeftChild());
         preOrderRecursion(root.getRightChild());
+    }
+    
+    public static <T> void postOrder(Node<T> root){
+        if(root==null)
+            return;
+        
+        Set<Node<T>> visitedNodes = new HashSet<>();
+        Stack<Node<T>> stack = new Stack<>();
+        
+        stack.push(root);
+        
+        while(!stack.isEmpty()){
+        
+            Node<T> top = stack.pop();
+            
+            if(top.getLeftChild()==null && top.getRightChild()==null){
+                System.out.print(top + " -->");
+            }else if(visitedNodes.contains(top)){
+                System.out.print(top +" --> ");
+            }else{
+            
+                visitedNodes.add(top);
+                stack.push(top);
+                
+                if(top.getRightChild()!=null){
+                    stack.push(top.getRightChild());
+                }
+                if(top.getLeftChild()!=null){
+                    stack.push(top.getLeftChild());
+                }
+            }
+        }
     }
     
     public static <T> void breadthFirst(Node<T> root){
