@@ -51,7 +51,7 @@ public class JavaApplication1 {
         inOrder(a);
         
     }
-    
+    // left - root - right
     public static <T> void inOrder(Node<T> root){
         if(root==null){
             return;
@@ -72,13 +72,13 @@ public class JavaApplication1 {
                 System.out.print(top+" --> ");
             }else{
                 visitedNodes.add(top);
-                
+                //check right child
                 if(top.getRightChild()!=null){
                     stack.push(top.getRightChild());
                 }
                 
                 stack.push(top);
-                
+                //check left child
                 if(top.getLeftChild()!=null){
                     stack.push(top.getLeftChild());
                 }
